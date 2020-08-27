@@ -1,41 +1,56 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCart, faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Card from "react-bootstrap/Card";
+
 import "./Course.css";
+import { CardDeck } from "react-bootstrap";
 
 const Course = (props) => {
-  //   console.log(props);
   const cartIcon = <FontAwesomeIcon icon={faShoppingBasket} />;
   const { image, name, author, price, description } = props.course;
   return (
     <div className="course">
       <div>
-        <img src={image} alt="" />
-      </div>
-      <div>
-        <h4 className="course-name">{name}</h4>
-        <br />
-        <p>
-          <small>by: {author} </small>
-        </p>
-        <p>${price}</p>
-        <br />
-        <p>
-          <small>About Course: {description}</small>
-        </p>
-        <Button
-          className="btn btn-info"
-          onClick={() => props.handleAddCourse(props.course)}
-        >
-          {cartIcon} Enroll Now
-        </Button>
+        <div>
+          <CardDeck style={{ display: "flex", flexDirection: "row" }}>
+            <Card style={{ flex: 1 }} style={{ width: "18rem" }}>
+              <Card.Img variant="top" src={image} />
+              <Card.Body>
+                <Card.Title>{name}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">
+                  By: {author}
+                </Card.Subtitle>
+                <br></br>
+                <p>
+                  <small>
+                    <Button variant="success">
+                      Course Price: ${price}
+                      <span className="sr-only">unread messages</span>
+                    </Button>
+                  </small>
+                </p>
+
+                <Card.Text>
+                  {" "}
+                  <h6>About Course:</h6> {description}
+                </Card.Text>
+
+                <Button
+                  className="btn btn-info"
+                  onClick={() => props.handleAddCourse(props.course)}
+                >
+                  {cartIcon} Enroll Now
+                </Button>
+              </Card.Body>
+            </Card>
+          </CardDeck>
+        </div>
       </div>
     </div>
   );
 };
-
-// className="enroll-button"
 
 export default Course;
