@@ -17,10 +17,12 @@ const Shop = () => {
   return (
     <div className="shop-container">
       <div className="course-container">
-        <h3>{courses.length}</h3>
-
         {courses.map((crs) => (
-          <Course handleAddCourse={handleAddCourse} course={crs}></Course>
+          <Course
+            key={crs.id}
+            handleAddCourse={handleAddCourse}
+            course={crs}
+          ></Course>
         ))}
       </div>
       <div className="cart-container">

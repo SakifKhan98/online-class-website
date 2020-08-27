@@ -1,6 +1,8 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCart, faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
+import Button from "react-bootstrap/Button";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./Course.css";
 
 const Course = (props) => {
@@ -10,7 +12,7 @@ const Course = (props) => {
   return (
     <div className="course">
       <div>
-        <img src={image} alt="" srcset="" />
+        <img src={image} alt="" />
       </div>
       <div>
         <h4 className="course-name">{name}</h4>
@@ -23,15 +25,17 @@ const Course = (props) => {
         <p>
           <small>About Course: {description}</small>
         </p>
-        <button
-          className="enroll-button"
+        <Button
+          className="btn btn-info"
           onClick={() => props.handleAddCourse(props.course)}
         >
           {cartIcon} Enroll Now
-        </button>
+        </Button>
       </div>
     </div>
   );
 };
+
+// className="enroll-button"
 
 export default Course;
